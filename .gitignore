@@ -1,0 +1,21 @@
+/[Bb]uild/
+/[Ll]ibrary/
+/[Ll]ogs/
+/[Oo]bj/
+/[Tt]emp/
+
+# Don't ignore meta files
+!/[Aa]ssets/**/*.meta
+
+# Debug meta files
+*.pidb.meta
+*.pdb.meta
+*.mdb.meta
+sysinfo.txt
+
+# Visual Studio Code
+.vscode/
+
+# Vim
+
+
