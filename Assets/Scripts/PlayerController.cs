@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
@@ -25,22 +27,93 @@ public class PlayerController : MonoBehaviour {
     #endregion
     #endregion
 
-    private KeyCode lastKeyDown = KeyCode.None;
+    private List<KeyCode> keys = new List<KeyCode>();
     private Vector3 direction = new Vector3();
+    private bool isMoving;
 
     private void Update() {
         PollInput();
+        UpdateMovement();
     }
 
     private void PollInput() {
         if (Input.GetKeyDown(keyUp)) {
-            lastKeyDown = keyUp;
+            keys.Add(keyUp);
         } else if (Input.GetKeyDown(keyDown)) {
-            lastKeyDown = keyDown;
+            keys.Add(keyDown);
         } else if (Input.GetKeyDown(keyLeft)) {
-            lastKeyDown = keyLeft;
+            keys.Add(keyLeft);
         } else if (Input.GetKeyDown(keyRight)) {
-            lastKeyDown = keyRight;
+            keys.Add(keyRight);
+        }
+
+        if (Input.GetKeyUp(keyUp)) {
+            keys.Remove(keyUp);
+        } else if (Input.GetKeyUp(keyDown)) {
+            keys.Remove(keyDown);
+        } else if (Input.GetKeyUp(keyLeft)) {
+            keys.Remove(keyLeft);
+        } else if (Input.GetKeyUp(keyRight)) {
+            keys.Remove(keyRight);
+        }
+
+    }
+
+    private void UpdateMovement() {
+        if (keys.Count == 0) {
+            return;
+        }
+
+        Vector3 dir = GetDirection(keys[keys.Count - 1]);
+        if (!isMoving) {
+            Move(dir);
+        } else if (dir == -direction) {
+            Stop();
+            Move(dir);
+        }
+    }
+
+    private void Move(Vector3 direction) {
+        this.direction = direction;
+        isMoving = true;
+        StartCoroutine("MoveInDirection", direction);
+    }
+
+    private void Stop() {
+        isMoving = false;
+        StopCoroutine("MoveInDirection");
+    }
+
+    private IEnumerator MoveInDirection(Vector3 direction) {
+        Vector3 start = transform.position;
+        Vector3 target = VectorUtil.ToIntVector3(start + direction);
+        float t = 0;
+
+        while (t <= 1) {
+            transform.position = Vector3.Lerp(start, target, t);
+            t += speed * Time.deltaTime;
+
+            if (t >= 1) {
+                break;
+            }
+            yield return null;
+        }
+
+        transform.position = VectorUtil.ToIntVector3(transform.position);
+        isMoving = false;
+    }
+
+    private Vector3 GetDirection(KeyCode key) {
+        if (key == keyUp) {
+            return new Vector3(0, 1, 0);
+        } else if (key == keyDown) {
+            return new Vector3(0, -1, 0);
+        } else if (key == keyLeft) {
+            return new Vector3(-1, 0, 0);
+        } else if (key == keyRight) {
+            return new Vector3(1, 0, 0);
+        } else {
+            return new Vector3();
         }
     }
 }
