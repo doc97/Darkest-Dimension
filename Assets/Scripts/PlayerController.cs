@@ -2,118 +2,122 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour {
+namespace DarkestDimension {
 
-    #region Fields
-    [Header("Input bindings")]
-    #region Input bindings
-    [SerializeField]
-    private KeyCode keyUp = KeyCode.W;
+    public class PlayerController : MonoBehaviour {
 
-    [SerializeField]
-    private KeyCode keyDown = KeyCode.S;
+        #region Fields
+        [Header("Input bindings")]
+        #region Input bindings
+        [SerializeField]
+        private KeyCode keyUp = KeyCode.W;
 
-    [SerializeField]
-    private KeyCode keyLeft = KeyCode.A;
+        [SerializeField]
+        private KeyCode keyDown = KeyCode.S;
 
-    [SerializeField]
-    private KeyCode keyRight = KeyCode.D;
-    #endregion
+        [SerializeField]
+        private KeyCode keyLeft = KeyCode.A;
 
-    [Header("Gameplay")]
-    #region Gameplay
-    [SerializeField]
-    private float speed = 1;
-    #endregion
-    #endregion
+        [SerializeField]
+        private KeyCode keyRight = KeyCode.D;
+        #endregion
 
-    private List<KeyCode> keys = new List<KeyCode>();
-    private Vector3 direction = new Vector3();
-    private bool isMoving;
+        [Header("Gameplay")]
+        #region Gameplay
+        [SerializeField]
+        private float speed = 1;
+        #endregion
+        #endregion
 
-    private void Update() {
-        PollInput();
-        UpdateMovement();
-    }
+        private List<KeyCode> keys = new List<KeyCode>();
+        private Vector3 direction = new Vector3();
+        private bool isMoving;
 
-    private void PollInput() {
-        if (Input.GetKeyDown(keyUp)) {
-            keys.Add(keyUp);
-        } else if (Input.GetKeyDown(keyDown)) {
-            keys.Add(keyDown);
-        } else if (Input.GetKeyDown(keyLeft)) {
-            keys.Add(keyLeft);
-        } else if (Input.GetKeyDown(keyRight)) {
-            keys.Add(keyRight);
+        private void Update() {
+            PollInput();
+            UpdateMovement();
         }
 
-        if (Input.GetKeyUp(keyUp)) {
-            keys.Remove(keyUp);
-        } else if (Input.GetKeyUp(keyDown)) {
-            keys.Remove(keyDown);
-        } else if (Input.GetKeyUp(keyLeft)) {
-            keys.Remove(keyLeft);
-        } else if (Input.GetKeyUp(keyRight)) {
-            keys.Remove(keyRight);
-        }
-
-    }
-
-    private void UpdateMovement() {
-        if (keys.Count == 0) {
-            return;
-        }
-
-        Vector3 dir = GetDirection(keys[keys.Count - 1]);
-        if (!isMoving) {
-            Move(dir);
-        } else if (dir == -direction) {
-            Stop();
-            Move(dir);
-        }
-    }
-
-    private void Move(Vector3 direction) {
-        this.direction = direction;
-        isMoving = true;
-        StartCoroutine("MoveInDirection", direction);
-    }
-
-    private void Stop() {
-        isMoving = false;
-        StopCoroutine("MoveInDirection");
-    }
-
-    private IEnumerator MoveInDirection(Vector3 direction) {
-        Vector3 start = transform.position;
-        Vector3 target = VectorUtil.ToIntVector3(start + direction);
-        float t = 0;
-
-        while (t <= 1) {
-            transform.position = Vector3.Lerp(start, target, t);
-            t += speed * Time.deltaTime;
-
-            if (t >= 1) {
-                break;
+        private void PollInput() {
+            if (Input.GetKeyDown(keyUp)) {
+                keys.Add(keyUp);
+            } else if (Input.GetKeyDown(keyDown)) {
+                keys.Add(keyDown);
+            } else if (Input.GetKeyDown(keyLeft)) {
+                keys.Add(keyLeft);
+            } else if (Input.GetKeyDown(keyRight)) {
+                keys.Add(keyRight);
             }
-            yield return null;
+
+            if (Input.GetKeyUp(keyUp)) {
+                keys.Remove(keyUp);
+            } else if (Input.GetKeyUp(keyDown)) {
+                keys.Remove(keyDown);
+            } else if (Input.GetKeyUp(keyLeft)) {
+                keys.Remove(keyLeft);
+            } else if (Input.GetKeyUp(keyRight)) {
+                keys.Remove(keyRight);
+            }
+
         }
 
-        transform.position = VectorUtil.ToIntVector3(transform.position);
-        isMoving = false;
-    }
+        private void UpdateMovement() {
+            if (keys.Count == 0) {
+                return;
+            }
 
-    private Vector3 GetDirection(KeyCode key) {
-        if (key == keyUp) {
-            return new Vector3(0, 1, 0);
-        } else if (key == keyDown) {
-            return new Vector3(0, -1, 0);
-        } else if (key == keyLeft) {
-            return new Vector3(-1, 0, 0);
-        } else if (key == keyRight) {
-            return new Vector3(1, 0, 0);
-        } else {
-            return new Vector3();
+            Vector3 dir = GetDirection(keys[keys.Count - 1]);
+            if (!isMoving) {
+                Move(dir);
+            } else if (dir == -direction) {
+                Stop();
+                Move(dir);
+            }
+        }
+
+        private void Move(Vector3 direction) {
+            this.direction = direction;
+            isMoving = true;
+            StartCoroutine("MoveInDirection", direction);
+        }
+
+        private void Stop() {
+            isMoving = false;
+            StopCoroutine("MoveInDirection");
+        }
+
+        private IEnumerator MoveInDirection(Vector3 direction) {
+            Vector3 start = transform.position;
+            Vector3 target = VectorUtil.ToIntVector3(start + direction);
+            float t = 0;
+
+            while (t <= 1) {
+                transform.position = Vector3.Lerp(start, target, t);
+                t += speed * Time.deltaTime;
+
+                if (t >= 1) {
+                    break;
+                }
+                yield return null;
+            }
+
+            transform.position = VectorUtil.ToIntVector3(transform.position);
+            isMoving = false;
+        }
+
+        private Vector3 GetDirection(KeyCode key) {
+            if (key == keyUp) {
+                return new Vector3(0, 1, 0);
+            } else if (key == keyDown) {
+                return new Vector3(0, -1, 0);
+            } else if (key == keyLeft) {
+                return new Vector3(-1, 0, 0);
+            } else if (key == keyRight) {
+                return new Vector3(1, 0, 0);
+            } else {
+                return new Vector3();
+            }
         }
     }
+
 }
