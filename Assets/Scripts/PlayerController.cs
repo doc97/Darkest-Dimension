@@ -50,15 +50,14 @@ namespace DarkestDimension {
             }
 
             if (Input.GetKeyUp(keyUp)) {
-                keys.Remove(keyUp);
+                keys.RemoveAll((key) => key == keyUp);
             } else if (Input.GetKeyUp(keyDown)) {
-                keys.Remove(keyDown);
+                keys.RemoveAll((key) => key == keyDown);
             } else if (Input.GetKeyUp(keyLeft)) {
-                keys.Remove(keyLeft);
+                keys.RemoveAll((key) => key == keyLeft);
             } else if (Input.GetKeyUp(keyRight)) {
-                keys.Remove(keyRight);
+                keys.RemoveAll((key) => key == keyRight);
             }
-
         }
 
         private void UpdateMovement() {
