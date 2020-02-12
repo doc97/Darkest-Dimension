@@ -6,6 +6,13 @@ namespace DarkestDimension {
 
     public class PlayerController : MonoBehaviour {
 
+        #region Constants
+        private const string FRONT_NAME = "Character_front";
+        private const string BACK_NAME = "Character_back";
+        private const string LEFT_NAME = "Character_left";
+        private const string RIGHT_NAME = "Character_right";
+        #endregion
+
         #region Fields
         [Header("Input bindings")]
         #region Input bindings
@@ -77,6 +84,7 @@ namespace DarkestDimension {
         private void Move(Vector3 direction) {
             this.direction = direction;
             isMoving = true;
+            ActivateChild(GetChildNameByDirection(direction));
             StartCoroutine("MoveInDirection", direction);
         }
 
@@ -116,6 +124,25 @@ namespace DarkestDimension {
             } else {
                 return new Vector3();
             }
+        }
+
+        private string GetChildNameByDirection(Vector3 direction) {
+            if (direction.x > 0) {
+                return RIGHT_NAME;
+            } else if (direction.x < 0) {
+                return LEFT_NAME;
+            } else if (direction.y > 0) {
+                return BACK_NAME;
+            } else {
+                return FRONT_NAME;
+            }
+        }
+
+        private void ActivateChild(string childName) {
+            foreach (Transform child in transform) {
+                child.gameObject.SetActive(false);
+            }
+            transform.Find(childName).gameObject.SetActive(true);
         }
     }
 

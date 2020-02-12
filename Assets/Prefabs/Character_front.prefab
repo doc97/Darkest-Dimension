@@ -326,9 +326,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3636960078603847523}
   - component: {fileID: 4741620524103003484}
-  - component: {fileID: 6737675138219925149}
   m_Layer: 0
-  m_Name: Character
+  m_Name: Character_front
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -375,23 +374,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &6737675138219925149
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3636960078603847522}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b22303d06a3b164a9637652dd71933c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyUp: 119
-  keyDown: 115
-  keyLeft: 97
-  keyRight: 100
-  speed: 1
 --- !u!1 &3636960078918219277
 GameObject:
   m_ObjectHideFlags: 0
