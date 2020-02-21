@@ -11,12 +11,14 @@ namespace DarkestDimension {
         public static G Instance { get => instance; }
 
         public Player Player { get; }
+        public TurnState TurnState { get; }
         #endregion
 
         static G() { }
 
         private G() {
             Player = new Player(new PlayerStats(100, 10));
+            TurnState = new TurnState();
         }
 
         public void Update(float deltaTime) { }
