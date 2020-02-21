@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace DarkestDimension {
 
@@ -7,6 +8,18 @@ namespace DarkestDimension {
 
         private int prevSpellCount;
         private Transform[] spells = new Transform[6];
+        private Dictionary<SpellElement, Color> colors;
+
+        private void Awake() {
+            colors = new Dictionary<SpellElement, Color> {
+                { SpellElement.Fire,    Color.red     },
+                { SpellElement.Water,   Color.blue    },
+                { SpellElement.Earth,   Color.green   },
+                { SpellElement.Air,    Color.gray    },
+                { SpellElement.Divine,  Color.yellow  },
+                { SpellElement.Unholy,  Color.magenta },
+            };
+        }
 
         private void Start() {
             for (int i = 0; i < 6; i++) {
@@ -25,13 +38,6 @@ namespace DarkestDimension {
         }
 
         private void Update() {
-            if (Input.GetKeyDown(KeyCode.Return)) {
-                G.Instance.TurnState.SelectSpell(SpellElement.Fire);
-            }
-            if (Input.GetKeyDown(KeyCode.Backspace)) {
-                G.Instance.TurnState.DeselectSpell();
-            }
-
             // can be changed to event-based updates if performance is
             // necessary.
             int curSpellCount = G.Instance.TurnState.SelectedSpellCount;
@@ -42,6 +48,13 @@ namespace DarkestDimension {
         }
 
         private void UpdateSpells(int spellCount) {
+            // Sets color based on element type, will be changed to
+            // sprite later
+            List<SpellElement> elements = G.Instance.TurnState.SelectedSpells;
+            for (int i = 0; i < elements.Count; i++) {
+                spells[i].GetComponent<SpriteRenderer>().color = colors[elements[i]];
+            }
+
             GetComponent<Animator>().SetInteger("count", spellCount);
         }
     }

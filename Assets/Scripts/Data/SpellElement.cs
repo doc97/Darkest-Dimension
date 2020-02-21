@@ -1,7 +1,7 @@
 ﻿namespace DarkestDimension {
 
     public enum SpellElement {
-        Fire, Water, Earth, Divine, Unholy
+        Fire, Water, Earth, Air, Divine, Unholy
     }
 
 }
