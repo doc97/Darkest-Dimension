@@ -2,7 +2,7 @@ using System;
 
 namespace DarkestDimension {
 
-    public class LevelSystem {
+    public class PlayerLevelSystem {
 
         #region Properties
         public int MaxLevel { get => lvlExp.Length; }

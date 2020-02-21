@@ -7,7 +7,7 @@ namespace DarkestDimension.Tests {
 
         [Test]
         public void AddExp_Positive() {
-            LevelSystem sys = new LevelSystem();
+            PlayerLevelSystem sys = new PlayerLevelSystem();
             Player p = new Player(new PlayerStats(0, 0));
             sys.AddExp(p, 10);
             Assert.AreEqual(10, p.Exp);
@@ -15,7 +15,7 @@ namespace DarkestDimension.Tests {
 
         [Test]
         public void AddExp_Negative() {
-            LevelSystem sys = new LevelSystem();
+            PlayerLevelSystem sys = new PlayerLevelSystem();
             Player p = new Player(new PlayerStats(0, 0));
             sys.AddExp(p, -10);
             Assert.AreEqual(10, p.Exp);
@@ -23,7 +23,7 @@ namespace DarkestDimension.Tests {
 
         [Test]
         public void AddExp_LevelUp() {
-            LevelSystem sys = new LevelSystem();
+            PlayerLevelSystem sys = new PlayerLevelSystem();
             Player p = new Player(new PlayerStats(0, 0));
             sys.AddExp(p, 100);
             Assert.AreEqual(2, p.Level);
@@ -31,7 +31,7 @@ namespace DarkestDimension.Tests {
 
         [Test]
         public void AddExp_LevelUp_Max() {
-            LevelSystem sys = new LevelSystem();
+            PlayerLevelSystem sys = new PlayerLevelSystem();
             Player p = new Player(new PlayerStats(0, 0));
             sys.AddExp(p, 1000000);
             Assert.AreEqual(sys.MaxExperience, p.Exp);
