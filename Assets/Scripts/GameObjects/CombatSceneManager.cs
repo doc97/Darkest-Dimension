@@ -14,6 +14,7 @@ namespace DarkestDimension {
         }
 
         private void OnEndTurn(object sender, GameEventArgs e) {
+            Logger.Log("scene", "Change to scene 'NavigationScene'");
             SceneManager.LoadSceneAsync("NavigationScene");
         }
     }

@@ -13,6 +13,7 @@ namespace DarkestDimension {
         }
 
         private void OnCmdEnterCombat(object sender, GameEventArgs e) {
+            Logger.Log("scene", "Change to scene 'CombatScene'");
             SceneManager.LoadSceneAsync("CombatScene");
         }
     }

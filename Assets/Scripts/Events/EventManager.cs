@@ -5,46 +5,69 @@ namespace DarkestDimension {
     public class EventManager {
 
         #region Events handlers
-        // TODO: Add logging for (un)subscription of events
         object objectLock = new System.Object();
 
         private event EventHandler<GameEventArgs> _broadcast;
         public event EventHandler<GameEventArgs> Broadcast {
             add {
-                lock (objectLock) { _broadcast += value; }
+                lock (objectLock) {
+                    Logger.Log("event", "Subscribe to event 'broadcast'");
+                    _broadcast += value;
+                }
             }
             remove {
-                lock (objectLock) { _broadcast -= value; }
+                lock (objectLock) {
+                    Logger.Log("event", "Unsubscribe from event 'broadcast'");
+                    _broadcast -= value;
+                }
             }
         }
 
         private event EventHandler<GameEventArgs> _generic;
         public event EventHandler<GameEventArgs> Generic {
             add {
-                lock (objectLock) { _generic += value; }
+                lock (objectLock) {
+                    Logger.Log("event", "Subscribe to event 'generic'");
+                    _generic += value;
+                }
             }
             remove {
-                lock (objectLock) { _generic -= value; }
+                lock (objectLock) {
+                    Logger.Log("event", "Unsubscribe from event 'generic'");
+                    _generic -= value;
+                }
             }
         }
 
         private event EventHandler<GameEventArgs> _cmdEndTurn;
         public event EventHandler<GameEventArgs> CmdEndTurn {
             add {
-                lock (objectLock) { _cmdEndTurn += value; }
+                lock (objectLock) {
+                    Logger.Log("event", "Subscribe to event 'CmdEndTurn'");
+                    _cmdEndTurn += value;
+                }
             }
             remove {
-                lock (objectLock) { _cmdEndTurn -= value; }
+                lock (objectLock) {
+                    Logger.Log("event", "Unsubscribe from event 'CmdEndTurn'");
+                    _cmdEndTurn -= value;
+                }
             }
         }
 
         private event EventHandler<GameEventArgs> _cmdEnterCombat;
         public event EventHandler<GameEventArgs> CmdEnterCombat {
             add {
-                lock (objectLock) { _cmdEnterCombat += value; }
+                lock (objectLock) {
+                    Logger.Log("event", "Subscribe to event 'CmdEnterCombat'");
+                    _cmdEnterCombat += value;
+                }
             }
             remove {
-                lock (objectLock) { _cmdEnterCombat -= value; }
+                lock (objectLock) {
+                    Logger.Log("event", "Unsubscribe from event 'CmdEnterCombat'");
+                    _cmdEnterCombat -= value;
+                }
             }
         }
         #endregion
@@ -73,15 +96,13 @@ namespace DarkestDimension {
                     RaiseGameEvent(_cmdEnterCombat, sender, args);
                     break;
                 default:
-                    // TODO: Use own logger API
-                    Debug.LogErrorFormat("[event]: No handler registered for event type '{0}'", args.Type);
+                    Logger.Error("event", "No handler registered for event type '{0}'", args.Type);
                     break;
             }
         }
 
         private void RaiseGameEvent(EventHandler<GameEventArgs> handler, object sender, GameEventArgs args) {
-            // TODO: Use own logger API
-            Debug.LogFormat("[event]: Raising event of type '{0}'", args.Type);
+            Logger.Log("event", "Raising event of type '{0}'", args.Type);
 
             // Make local copy to stay thread-safe
             EventHandler<GameEventArgs> _handler = handler;
