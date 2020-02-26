@@ -132,8 +132,9 @@ GameObject:
   - component: {fileID: 35452068}
   - component: {fileID: 35452067}
   - component: {fileID: 35452066}
+  - component: {fileID: 35452069}
   m_Layer: 5
-  m_Name: Button
+  m_Name: EndTurnButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -201,18 +202,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 35452067}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1862344554}
-        m_MethodName: GoToNavigationScene
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &35452067
@@ -252,6 +242,90 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 35452064}
   m_CullTransparentMesh: 0
+--- !u!114 &35452069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 35452064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ed40762bb4a0d2429133346e731240d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent:
+    type: 1
+    message: 
+--- !u!1001 &118372692
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 9133426983308760904, guid: 3506612e0b979714e8c8e29a4dabd75d,
+        type: 3}
+      propertyPath: m_Name
+      value: GObject
+      objectReference: {fileID: 0}
+    - target: {fileID: 3701765143325687115, guid: 3506612e0b979714e8c8e29a4dabd75d,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3701765143325687115, guid: 3506612e0b979714e8c8e29a4dabd75d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3701765143325687115, guid: 3506612e0b979714e8c8e29a4dabd75d,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3701765143325687115, guid: 3506612e0b979714e8c8e29a4dabd75d,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3701765143325687115, guid: 3506612e0b979714e8c8e29a4dabd75d,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3701765143325687115, guid: 3506612e0b979714e8c8e29a4dabd75d,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3701765143325687115, guid: 3506612e0b979714e8c8e29a4dabd75d,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3701765143325687115, guid: 3506612e0b979714e8c8e29a4dabd75d,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3701765143325687115, guid: 3506612e0b979714e8c8e29a4dabd75d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3701765143325687115, guid: 3506612e0b979714e8c8e29a4dabd75d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3701765143325687115, guid: 3506612e0b979714e8c8e29a4dabd75d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3506612e0b979714e8c8e29a4dabd75d, type: 3}
 --- !u!1 &452485330
 GameObject:
   m_ObjectHideFlags: 0
@@ -576,7 +650,7 @@ Transform:
   - {fileID: 712947152}
   - {fileID: 848389298}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1177981400
 GameObject:
@@ -916,11 +990,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1862344553}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 115.04153, y: 0.015929664, z: 1.2796816}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1924450233
 GameObject:
@@ -1036,7 +1110,7 @@ Transform:
   - {fileID: 1575495017}
   - {fileID: 1541403528}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2112308691
 GameObject:
@@ -1050,7 +1124,7 @@ GameObject:
   - component: {fileID: 2112308694}
   - component: {fileID: 2112308693}
   m_Layer: 5
-  m_Name: EndTurnBtn
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
