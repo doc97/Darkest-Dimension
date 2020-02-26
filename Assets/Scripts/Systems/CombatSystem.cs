@@ -14,6 +14,11 @@ namespace DarkestDimension {
             G.Instance.Events.CmdDeselectSpell += OnCmdDeselectSpell;
         }
 
+        public void Reset() {
+            turnCounter = 0;
+            IsPlayerTurn = true;
+        }
+
         private void OnCmdEndTurn(object sender, GameEventArgs e) {
             IsPlayerTurn = !IsPlayerTurn;
             G.Instance.SpellCast.DeselectAllSpells();
@@ -22,10 +27,9 @@ namespace DarkestDimension {
                 turnCounter++;
                 if (turnCounter == 3) {
                     G.Instance.Events.RaiseGameEvent(this, GameEventType.CmdExitCombat);
-
                 } else {
                     // Simulate AI turn
-                    Task.Delay(2000).ContinueWith((t) => {
+                    Task.Delay(2000).ContinueWith(t => {
                         G.Instance.Events.RaiseGameEvent(this, GameEventType.CmdEndTurn);
                     });
                 }

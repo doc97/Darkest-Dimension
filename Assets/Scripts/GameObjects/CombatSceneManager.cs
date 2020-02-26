@@ -13,6 +13,10 @@ namespace DarkestDimension {
             G.Instance.Events.CmdExitCombat -= OnCmdExitCombat;
         }
 
+        private void Start() {
+            G.Instance.Combat.Reset();
+        }
+
         private void OnCmdExitCombat(object sender, GameEventArgs e) {
             Logger.Log("scene", "Change to scene 'NavigationScene'");
             SceneManager.LoadSceneAsync("NavigationScene");
