@@ -1,5 +1,4 @@
 using System;
-using UnityEngine;
 
 namespace DarkestDimension {
     public class EventManager {
@@ -102,7 +101,7 @@ namespace DarkestDimension {
         }
 
         private void RaiseGameEvent(EventHandler<GameEventArgs> handler, object sender, GameEventArgs args) {
-            Logger.Log("event", "Raising event of type '{0}'", args.Type);
+            Logger.Log("event", "Raise event of type '{0}'", args.Type);
 
             // Make local copy to stay thread-safe
             EventHandler<GameEventArgs> _handler = handler;
