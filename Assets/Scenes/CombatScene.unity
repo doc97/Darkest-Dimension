@@ -129,9 +129,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 35452065}
+  - component: {fileID: 35452071}
   - component: {fileID: 35452068}
   - component: {fileID: 35452067}
   - component: {fileID: 35452066}
+  - component: {fileID: 35452070}
   - component: {fileID: 35452069}
   m_Layer: 5
   m_Name: EndTurnButton
@@ -180,11 +182,11 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_NormalColor: {r: 0.745283, g: 0.62313783, b: 0.19686718, a: 1}
+    m_HighlightedColor: {r: 0.8679245, g: 0.75370234, b: 0.3520826, a: 1}
+    m_PressedColor: {r: 0.74509805, g: 0.62352943, b: 0.19607843, a: 1}
+    m_SelectedColor: {r: 0.74509805, g: 0.62352943, b: 0.19607843, a: 1}
+    m_DisabledColor: {r: 0.5377358, g: 0.5377358, b: 0.5377358, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -218,7 +220,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.7169812, g: 0.5797702, b: 0.19615522, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -256,6 +258,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameEvent:
     type: 1
+--- !u!114 &35452070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 35452064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c2abc806c6987d4cb0648b7ee065e19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &35452071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 35452064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c84836420f3cc7241b7584ebbb1c0a0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  status: {r: 0, g: 1, b: 0, a: 1}
 --- !u!1001 &118372692
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -548,11 +575,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1098459890}
     m_Modifications:
-    - target: {fileID: 2268831327296112941, guid: 1fdb31cebd5bd9e49827c4a7c29461f4,
-        type: 3}
-      propertyPath: m_Name
-      value: Character_side
-      objectReference: {fileID: 0}
     - target: {fileID: 2268831327296112940, guid: 1fdb31cebd5bd9e49827c4a7c29461f4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -622,6 +644,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2268831327296112941, guid: 1fdb31cebd5bd9e49827c4a7c29461f4,
+        type: 3}
+      propertyPath: m_Name
+      value: Character_side
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1fdb31cebd5bd9e49827c4a7c29461f4, type: 3}
@@ -731,11 +758,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1098459890}
     m_Modifications:
-    - target: {fileID: 2268831327296112941, guid: 1fdb31cebd5bd9e49827c4a7c29461f4,
-        type: 3}
-      propertyPath: m_Name
-      value: Character_side (1)
-      objectReference: {fileID: 0}
     - target: {fileID: 2268831327296112940, guid: 1fdb31cebd5bd9e49827c4a7c29461f4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -805,6 +827,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2268831327296112941, guid: 1fdb31cebd5bd9e49827c4a7c29461f4,
+        type: 3}
+      propertyPath: m_Name
+      value: Character_side (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1fdb31cebd5bd9e49827c4a7c29461f4, type: 3}
@@ -1034,6 +1061,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41a1be4b7a2fe504190c55539ce1a0a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1881128958 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6680132231925452195, guid: 6859aaae20194a0488156269ea27c423,
+    type: 3}
+  m_PrefabInstance: {fileID: 6680132232516691505}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1881128959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1881128958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c84836420f3cc7241b7584ebbb1c0a0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  status: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &1924450233
 GameObject:
   m_ObjectHideFlags: 0
@@ -1185,7 +1231,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 360, y: 80}
+  m_SizeDelta: {x: 300, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2112308693
 MonoBehaviour:
@@ -1216,8 +1262,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4281348144
+  m_fontColor: {r: 0.18867922, g: 0.18867922, b: 0.18867922, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1235,8 +1281,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 64
-  m_fontSizeBase: 64
+  m_fontSize: 48
+  m_fontSizeBase: 48
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1252,7 +1298,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: -1
+  m_firstOverflowCharacterIndex: 0
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -1732,6 +1778,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_textInfo.pageCount
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8927495354992702651, guid: e7289a92ec2519240854f0e76949dcfa,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 200
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7289a92ec2519240854f0e76949dcfa, type: 3}

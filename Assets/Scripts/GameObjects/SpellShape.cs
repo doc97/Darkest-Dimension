@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace DarkestDimension {
 
-    [RequireComponent(typeof(SpriteRenderer))]
+    [RequireComponent(typeof(StatusValidation))]
     public class SpellShape : MonoBehaviour {
 
         private int prevSpellCount;
@@ -28,13 +28,10 @@ namespace DarkestDimension {
         }
 
         private void OnValidate() {
-            bool hasCorrectChildCount = transform.childCount == 6;
-
-            if (hasCorrectChildCount) {
-                GetComponent<SpriteRenderer>().color = Color.green;
-            } else {
-                GetComponent<SpriteRenderer>().color = Color.red;
-            }
+            StatusValidation status = GetComponent<StatusValidation>();
+            status.ClearConditions();
+            status.AddCondition(() => transform.childCount == 6);
+            status.UpdateStatus();
         }
 
         private void Update() {

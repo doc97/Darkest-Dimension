@@ -4,6 +4,10 @@ namespace DarkestDimension {
 
     public class CombatSceneInput : MonoBehaviour {
         private void Update() {
+            if (!G.Instance.Combat.IsPlayerTurn) {
+                return;
+            }
+
             if (Input.GetKeyDown(KeyCode.Q)) {
                 G.Instance.Events.RaiseGameEvent(this, GameEventType.CmdSelectSpell, SpellElement.Fire);
             }

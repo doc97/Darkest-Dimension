@@ -1,6 +1,10 @@
+using System.Threading.Tasks;
+
 namespace DarkestDimension {
 
     public class CombatSystem {
+
+        public bool IsPlayerTurn { get; private set; } = true;
 
         private int turnCounter;
 
@@ -11,15 +15,25 @@ namespace DarkestDimension {
         }
 
         private void OnCmdEndTurn(object sender, GameEventArgs e) {
-            turnCounter++;
-            if (turnCounter == 3) {
-                G.Instance.Events.RaiseGameEvent(this, GameEventType.CmdExitCombat);
+            IsPlayerTurn = !IsPlayerTurn;
+            G.Instance.SpellCast.DeselectAllSpells();
+
+            if (!IsPlayerTurn) {
+                turnCounter++;
+                if (turnCounter == 3) {
+                    G.Instance.Events.RaiseGameEvent(this, GameEventType.CmdExitCombat);
+
+                } else {
+                    // Simulate AI turn
+                    Task.Delay(2000).ContinueWith((t) => {
+                        G.Instance.Events.RaiseGameEvent(this, GameEventType.CmdEndTurn);
+                    });
+                }
             }
         }
 
         private void OnCmdSelectSpell(object sender, GameEventArgs e) {
-            SpellElement element = (SpellElement) e.Data;
-            G.Instance.SpellCast.SelectSpell(element);
+            G.Instance.SpellCast.SelectSpell((SpellElement) e.Data);
         }
 
         private void OnCmdDeselectSpell(object sender, GameEventArgs e) {
