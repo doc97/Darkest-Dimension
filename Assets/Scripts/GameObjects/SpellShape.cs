@@ -15,7 +15,7 @@ namespace DarkestDimension {
                 { SpellElement.Fire,    Color.red     },
                 { SpellElement.Water,   Color.blue    },
                 { SpellElement.Earth,   Color.green   },
-                { SpellElement.Air,    Color.gray    },
+                { SpellElement.Air,     Color.gray    },
                 { SpellElement.Divine,  Color.yellow  },
                 { SpellElement.Unholy,  Color.magenta },
             };
