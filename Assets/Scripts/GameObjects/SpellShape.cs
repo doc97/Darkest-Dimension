@@ -40,7 +40,7 @@ namespace DarkestDimension {
         private void Update() {
             // can be changed to event-based updates if performance is
             // necessary.
-            int curSpellCount = G.Instance.TurnState.SelectedSpellCount;
+            int curSpellCount = G.Instance.SpellCast.SelectedSpellCount;
             if (curSpellCount != prevSpellCount) {
                 UpdateSpells(curSpellCount);
                 prevSpellCount = curSpellCount;
@@ -50,7 +50,7 @@ namespace DarkestDimension {
         private void UpdateSpells(int spellCount) {
             // Sets color based on element type, will be changed to
             // sprite later
-            List<SpellElement> elements = G.Instance.TurnState.SelectedSpells;
+            List<SpellElement> elements = G.Instance.SpellCast.SelectedSpells;
             for (int i = 0; i < elements.Count; i++) {
                 spells[i].GetComponent<SpriteRenderer>().color = colors[elements[i]];
             }

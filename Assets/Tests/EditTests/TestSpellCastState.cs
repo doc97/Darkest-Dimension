@@ -4,11 +4,11 @@ using System.Collections.Generic;
 namespace DarkestDimension.Tests {
 
     [TestFixture]
-    public class TestTurnState {
+    public class TestSpellCastState {
 
         [Test]
         public void SelectSpell_MoreThanSix() {
-            TurnState state = new TurnState();
+            SpellCastState state = new SpellCastState();
             for (int i = 0; i < 7; i++) {
                 state.SelectSpell(SpellElement.Fire);
             }
@@ -17,7 +17,7 @@ namespace DarkestDimension.Tests {
 
         [Test]
         public void SelectSpell_TypeMatches() {
-            TurnState state = new TurnState();
+            SpellCastState state = new SpellCastState();
             state.SelectSpell(SpellElement.Fire);
             state.SelectSpell(SpellElement.Water);
 
@@ -28,14 +28,14 @@ namespace DarkestDimension.Tests {
 
         [Test]
         public void DeselectSpell_Empty() {
-            TurnState state = new TurnState();
+            SpellCastState state = new SpellCastState();
             state.DeselectSpell();
             Assert.AreEqual(0, state.SelectedSpellCount);
         }
 
         [Test]
         public void DeselectSpell_One() {
-            TurnState state = new TurnState();
+            SpellCastState state = new SpellCastState();
             state.SelectSpell(SpellElement.Fire);
             state.DeselectSpell();
             Assert.AreEqual(0, state.SelectedSpellCount);
@@ -43,7 +43,7 @@ namespace DarkestDimension.Tests {
 
         [Test]
         public void DeselectSpell_LIFO() {
-            TurnState state = new TurnState();
+            SpellCastState state = new SpellCastState();
             state.SelectSpell(SpellElement.Fire);
             state.SelectSpell(SpellElement.Water);
             state.DeselectSpell();

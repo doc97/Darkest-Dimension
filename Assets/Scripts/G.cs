@@ -12,7 +12,7 @@ namespace DarkestDimension {
 
         public EventManager Events { get; }
         public Player Player { get; }
-        public TurnState TurnState { get; }
+        public SpellCastState SpellCast { get; }
         #endregion
 
         static G() { }
@@ -20,7 +20,7 @@ namespace DarkestDimension {
         private G() {
             Events = new EventManager();
             Player = new Player(new PlayerStats(100, 10));
-            TurnState = new TurnState();
+            SpellCast = new SpellCastState();
         }
 
         public void Update(float deltaTime) { }

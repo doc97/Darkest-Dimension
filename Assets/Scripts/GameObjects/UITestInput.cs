@@ -5,25 +5,25 @@ namespace DarkestDimension {
     public class UITestInput : MonoBehaviour {
         private void Update() {
             if (Input.GetKeyDown(KeyCode.Q)) {
-                G.Instance.TurnState.SelectSpell(SpellElement.Fire);
+                G.Instance.SpellCast.SelectSpell(SpellElement.Fire);
             }
             if (Input.GetKeyDown(KeyCode.W)) {
-                G.Instance.TurnState.SelectSpell(SpellElement.Water);
+                G.Instance.SpellCast.SelectSpell(SpellElement.Water);
             }
             if (Input.GetKeyDown(KeyCode.E)) {
-                G.Instance.TurnState.SelectSpell(SpellElement.Earth);
+                G.Instance.SpellCast.SelectSpell(SpellElement.Earth);
             }
             if (Input.GetKeyDown(KeyCode.R)) {
-                G.Instance.TurnState.SelectSpell(SpellElement.Air);
+                G.Instance.SpellCast.SelectSpell(SpellElement.Air);
             }
             if (Input.GetKeyDown(KeyCode.T)) {
-                G.Instance.TurnState.SelectSpell(SpellElement.Divine);
+                G.Instance.SpellCast.SelectSpell(SpellElement.Divine);
             }
             if (Input.GetKeyDown(KeyCode.Y)) {
-                G.Instance.TurnState.SelectSpell(SpellElement.Unholy);
+                G.Instance.SpellCast.SelectSpell(SpellElement.Unholy);
             }
             if (Input.GetKeyDown(KeyCode.Backspace)) {
-                G.Instance.TurnState.DeselectSpell();
+                G.Instance.SpellCast.DeselectSpell();
             }
         }
     }
