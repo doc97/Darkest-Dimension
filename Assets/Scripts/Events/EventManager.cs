@@ -69,9 +69,57 @@ namespace DarkestDimension {
                 }
             }
         }
+
+        private event EventHandler<GameEventArgs> _cmdExitCombat;
+        public event EventHandler<GameEventArgs> CmdExitCombat {
+            add {
+                lock (objectLock) {
+                    Logger.Log("event", "Subscribe to event 'CmdExitCombat'");
+                    _cmdExitCombat += value;
+                }
+            }
+            remove {
+                lock (objectLock) {
+                    Logger.Log("event", "Unsubscribe from event 'CmdExitCombat'");
+                    _cmdExitCombat -= value;
+                }
+            }
+        }
+
+        private event EventHandler<GameEventArgs> _cmdSelectSpell;
+        public event EventHandler<GameEventArgs> CmdSelectSpell {
+            add {
+                lock (objectLock) {
+                    Logger.Log("event", "Subscribe to event 'CmdSelectSpell'");
+                    _cmdSelectSpell += value;
+                }
+            }
+            remove {
+                lock (objectLock) {
+                    Logger.Log("event", "Unsubscribe from event 'CmdSelectSpell'");
+                    _cmdSelectSpell -= value;
+                }
+            }
+        }
+
+        private event EventHandler<GameEventArgs> _cmdDeselectSpell;
+        public event EventHandler<GameEventArgs> CmdDeselectSpell {
+            add {
+                lock (objectLock) {
+                    Logger.Log("event", "Subscribe to event 'CmdDeselectSpell'");
+                    _cmdDeselectSpell += value;
+                }
+            }
+            remove {
+                lock (objectLock) {
+                    Logger.Log("event", "Unsubscribe from event 'CmdDeselectSpell'");
+                    _cmdDeselectSpell -= value;
+                }
+            }
+        }
         #endregion
 
-        public void BroadcastGameEvent(object sender, GameEventType type, string message = "") {
+        public void BroadcastGameEvent(object sender, GameEventType type, object message = null) {
             BroadcastGameEvent(sender, new GameEventArgs(type, message));
         }
 
@@ -79,7 +127,7 @@ namespace DarkestDimension {
             RaiseGameEvent(_broadcast, sender, args);
         }
 
-        public void RaiseGameEvent(object sender, GameEventType type, string message = "") {
+        public void RaiseGameEvent(object sender, GameEventType type, object message = null) {
             RaiseGameEvent(sender, new GameEventArgs(type, message));
         }
 
@@ -93,6 +141,15 @@ namespace DarkestDimension {
                     break;
                 case GameEventType.CmdEnterCombat:
                     RaiseGameEvent(_cmdEnterCombat, sender, args);
+                    break;
+                case GameEventType.CmdExitCombat:
+                    RaiseGameEvent(_cmdExitCombat, sender, args);
+                    break;
+                case GameEventType.CmdSelectSpell:
+                    RaiseGameEvent(_cmdSelectSpell, sender, args);
+                    break;
+                case GameEventType.CmdDeselectSpell:
+                    RaiseGameEvent(_cmdDeselectSpell, sender, args);
                     break;
                 default:
                     Logger.Error("event", "No handler registered for event type '{0}'", args.Type);

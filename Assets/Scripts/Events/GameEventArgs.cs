@@ -5,21 +5,21 @@ namespace DarkestDimension {
     [Serializable]
     public struct GameEventArgsParam {
         public GameEventType type;
-        public string message;
+        public object data;
     }
 
     public class GameEventArgs : EventArgs {
 
         public GameEventType Type { get; }
-        public string Message { get; }
+        public object Data { get; }
 
-        public GameEventArgs(string message) : this(GameEventType.Generic, message) { }
+        public GameEventArgs(object data) : this(GameEventType.Generic, data) { }
         public GameEventArgs(GameEventType type) : this(type, "") { }
-        public GameEventArgs(GameEventArgsParam param) : this(param.type, param.message) { }
+        public GameEventArgs(GameEventArgsParam param) : this(param.type, param.data) { }
 
-        public GameEventArgs(GameEventType type, string message) {
+        public GameEventArgs(GameEventType type, object data) {
             Type = type;
-            Message = message;
+            Data = data;
         }
     }
 

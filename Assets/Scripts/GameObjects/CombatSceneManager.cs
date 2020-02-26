@@ -6,14 +6,14 @@ namespace DarkestDimension {
     public class CombatSceneManager : MonoBehaviour {
 
         private void Awake() {
-            G.Instance.Events.CmdEndTurn += OnEndTurn;
+            G.Instance.Events.CmdExitCombat += OnCmdExitCombat;
         }
 
         private void OnDestroy() {
-            G.Instance.Events.CmdEndTurn -= OnEndTurn;
+            G.Instance.Events.CmdExitCombat -= OnCmdExitCombat;
         }
 
-        private void OnEndTurn(object sender, GameEventArgs e) {
+        private void OnCmdExitCombat(object sender, GameEventArgs e) {
             Logger.Log("scene", "Change to scene 'NavigationScene'");
             SceneManager.LoadSceneAsync("NavigationScene");
         }

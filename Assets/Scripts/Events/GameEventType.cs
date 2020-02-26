@@ -1,5 +1,8 @@
 public enum GameEventType {
     Generic,
     CmdEndTurn,
-    CmdEnterCombat
+    CmdEnterCombat,
+    CmdExitCombat,
+    CmdSelectSpell,
+    CmdDeselectSpell,
 }
