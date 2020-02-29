@@ -5,4 +5,5 @@ public enum GameEventType {
     CmdExitCombat,
     CmdSelectSpell,
     CmdDeselectSpell,
+    CmdSelectSpellTarget,
 }

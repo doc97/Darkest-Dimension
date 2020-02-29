@@ -117,6 +117,22 @@ namespace DarkestDimension {
                 }
             }
         }
+
+        private event EventHandler<GameEventArgs> _cmdSelectSpellTarget;
+        public event EventHandler<GameEventArgs> CmdSelectSpellTarget {
+            add {
+                lock (objectLock) {
+                    Logger.Log("event", "Subscribe to event 'CmdSelectSpellTarget'");
+                    _cmdSelectSpellTarget += value;
+                }
+            }
+            remove {
+                lock (objectLock) {
+                    Logger.Log("event", "Unsubscribe from event 'CmdSelectSpellTarget'");
+                    _cmdSelectSpellTarget -= value;
+                }
+            }
+        }
         #endregion
 
         public void BroadcastGameEvent(object sender, GameEventType type, object message = null) {
@@ -150,6 +166,9 @@ namespace DarkestDimension {
                     break;
                 case GameEventType.CmdDeselectSpell:
                     RaiseGameEvent(_cmdDeselectSpell, sender, args);
+                    break;
+                case GameEventType.CmdSelectSpellTarget:
+                    RaiseGameEvent(_cmdSelectSpellTarget, sender, args);
                     break;
                 default:
                     Logger.Error("event", "No handler registered for event type '{0}'", args.Type);

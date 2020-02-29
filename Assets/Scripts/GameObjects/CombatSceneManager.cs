@@ -15,6 +15,8 @@ namespace DarkestDimension {
 
         private void Start() {
             G.Instance.Combat.Reset();
+            G.Instance.Events.RaiseGameEvent(this, GameEventType.CmdSelectSpellTarget,
+                new Entity("Enemy", new HealthComponent(5)));
         }
 
         private void OnCmdExitCombat(object sender, GameEventArgs e) {
