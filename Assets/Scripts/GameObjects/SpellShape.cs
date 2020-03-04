@@ -30,7 +30,7 @@ namespace DarkestDimension {
         private void OnValidate() {
             StatusValidation status = GetComponent<StatusValidation>();
             status.ClearConditions();
-            status.AddCondition(() => transform.childCount == 6);
+            status.AddCondition(() => transform.childCount == 6, "requires 6 children");
             status.UpdateStatus();
         }
 
