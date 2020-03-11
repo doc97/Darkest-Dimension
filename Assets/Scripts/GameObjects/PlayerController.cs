@@ -36,9 +36,10 @@ namespace DarkestDimension {
         #endregion
         #endregion
 
+        public bool IsMoving { get; private set; }
+
         private List<KeyCode> keys = new List<KeyCode>();
         private Vector3 direction = new Vector3();
-        private bool isMoving;
 
         private void Update() {
             PollInput();
@@ -73,7 +74,7 @@ namespace DarkestDimension {
             }
 
             Vector3 dir = GetDirection(keys[keys.Count - 1]);
-            if (!isMoving) {
+            if (!IsMoving) {
                 Move(dir);
             } else if (dir == -direction) {
                 Stop();
@@ -83,13 +84,13 @@ namespace DarkestDimension {
 
         private void Move(Vector3 direction) {
             this.direction = direction;
-            isMoving = true;
+            IsMoving = true;
             ActivateChild(GetChildNameByDirection(direction));
             StartCoroutine("MoveInDirection", direction);
         }
 
         private void Stop() {
-            isMoving = false;
+            IsMoving = false;
             StopCoroutine("MoveInDirection");
         }
 
@@ -109,7 +110,7 @@ namespace DarkestDimension {
             }
 
             transform.position = VectorUtil.ToIntVector3(transform.position);
-            isMoving = false;
+            IsMoving = false;
         }
 
         private Vector3 GetDirection(KeyCode key) {
